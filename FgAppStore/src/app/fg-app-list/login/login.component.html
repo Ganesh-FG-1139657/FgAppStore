@@ -1,0 +1,73 @@
+<!-- login.component.html -->
+
+<div class="login-container">
+  <mat-spinner *ngIf="loading" diameter="100" color="primary"></mat-spinner>
+  <div class="container" [ngClass]="{ hidden: loading }">
+    <div class="wrapper">
+      <div class="logo" >
+        <img
+          src="./assets/fg_logo-02-big.jpg"
+          alt="FGLI Life insurance"
+          height="100%"
+          width="100%"
+          style="object-fit: scale-down;"
+        />
+        <!-- <img
+          src="./assets/FgliLogo.png"
+          alt="FGLI Life insurance"
+          height="100"
+          width="300"
+        /> -->
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <form (ngSubmit)="encryptPassword()">
+        <div class="field">
+          <input id="field_1" type="text" required [(ngModel)]="userId" name="userId" />
+          <label for="field_1">Enter User ID</label>
+        </div>
+
+        <!--                 
+                <div class="field">
+                    <input type="password" required [(ngModel)]="password" name="password" />
+                    <label>Password</label>
+                </div> -->
+
+        <div class="field">
+          <input id="field_2" 
+            type="password"
+            required
+            [(ngModel)]="password"
+            name="password"
+          />
+          <label for="field_2">Password</label>
+        </div>
+
+        <div class="field">
+          <div class="dropdown-container">
+            <select id="field_3" 
+              class="select-field"
+              required
+              [(ngModel)]="channelType"
+              name="channelType"
+            >
+            <label for="field_3">Channel Type</label>
+              <option value="" disabled selected hidden>
+                <label >Channel Type</label>
+              </option>
+              <option value="0">Agent</option>
+              <option value="1">Partner</option>
+              <option value="2">Employee</option>
+            </select>
+          </div>
+        </div>
+        <div class="content">
+          
+        </div>
+        <div class="field">
+          <input type="submit" value="SIGN IN" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

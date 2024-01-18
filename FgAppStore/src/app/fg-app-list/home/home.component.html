@@ -1,0 +1,59 @@
+<span style="font-family: verdana, geneva, sans-serif">
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dashboard | By Code Info</title>
+
+    <!-- <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        /> -->
+  </head>
+
+
+  <body>
+    <div class="container">
+      <section class="main">
+        <header class="page-header">
+          <img src="./assets/FgliLogo.png" alt="Logo" />
+          <div class="header-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            <span (click)="logout()"> &#8594;Logout</span>
+          </div>
+        </header>
+        <section class="Card-Holder">
+          <div class="card-box">
+            <div class="card-group">
+              <div class="box" *ngFor="let item of dashboardItems">
+                <div class="box-content">
+                  <h3 class="box-title">{{ item.title }}</h3>
+                </div>
+
+                <div class="collapsible" (click)="toggleCollapsible(item)" >
+                  <input type="checkbox" [id]="item.title">
+                  <div class="collapsible-header">
+                    <label [for]="item.title" >More info  &#9432;</label>
+                  </div>
+                  <div class="box-icons">
+                    <a *ngFor="let link of item.links" [href]="link.url" [ngClass]="{ 'not-allowed': !link.url }"
+                      target="_blank" (click)="handleClick($event, link.url)">
+                      <img src="./assets/{{ link.type }}.png" alt="{{ link.type }}" />
+                      <h4>{{ link.type }}</h4>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
+
+  </html>
+</span>
+
+
